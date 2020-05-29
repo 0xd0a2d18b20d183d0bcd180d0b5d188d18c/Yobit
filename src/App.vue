@@ -35,7 +35,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar>
+    <v-app-bar app>
       <v-app-bar-nav-icon 
         class="hidden-md-and-up"
         @click="drawer = !drawer"
@@ -48,13 +48,18 @@
         v-for="link in links"
         :key="link.title"
         :to="link.url"
+        icon
       >
         <v-icon>{{link.icon}}</v-icon>
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
-      <router-view></router-view>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
+    <v-footer app>
+    </v-footer>
   </v-app>
 </template>
 

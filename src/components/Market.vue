@@ -1,10 +1,21 @@
 <template>
   <v-app>
-    <h1>Market</h1>
+    <v-card-title>
+      Market
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
     <v-data-table
       :headers="headers"
       :items="pairs"
       :items-per-page="5"
+      :search="search"
       class="elevation-1"
     >
     </v-data-table>
@@ -15,12 +26,8 @@
 export default {
   data () {
     return {
+      search: '',
       headers: [
-          {
-            text: 'Pair', 
-            align: 'start',
-            value: 'pair'
-          },
           {
             text: 'Base Cur',
             align: 'start',
@@ -48,7 +55,7 @@ export default {
             value: 'hr24VolCur'
           },
           {
-            text: 'Last price',
+            text: 'Price',
             sortable: true,
             value: 'lastPrice'
           },
@@ -77,7 +84,6 @@ export default {
             sortable: true,
             value: 'hr24Avg'
           }
-
       ],
       pairs: [
         {
